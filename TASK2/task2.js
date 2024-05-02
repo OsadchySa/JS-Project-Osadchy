@@ -36,19 +36,19 @@ let book4 = {
     title: 'Little Prince',
     pageCount: 270,
     genre: 'tale',
-    authors: ['Exupery', 44]
+    authors: [author1 = {authorName: 'Exupery', authorAge: 44}, author2 = {authorName: 'Kotliarevsky', authorAge: 55}]
 }
 let book5 = {
     title: 'Harry Potter',
     pageCount: 520,
     genre: 'novel',
-    authors: ['Rowling', 58]
+    authors: [author1 = {authorName: 'Rowling', authorAge:58}, author2 = {authorName: 'Shevchenko', authorAge: 47}]
 }
 let book6 = {
     title: 'A game of thrones',
     pageCount: 864,
     genre: 'novel',
-    authors: ['George Martin', 75]
+    authors: [author1 = {authorName: 'George Martin', authorAge:75}, author2 = {authorName: 'Stepan', authorAge: 120}]
 }
 
 
