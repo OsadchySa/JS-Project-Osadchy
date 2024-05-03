@@ -55,16 +55,16 @@ let book6 = {
 //Створити масив з 10 об'єктами які описують сутніть "користувач". Поля: name, username,password.
 //Вивести в консоль пароль кожного користувача
 users = [
-    user1 = {name: 'Ivan', username: 'qqq', password: 'qwe'},
-    user2 = {name: 'Mikola', username: 'www', password: 'rty'},
-    user3 = {name: 'Maksim', username: 'eee', password: 'uio'},
-    user4 = {name: 'Olena', username: 'rrr', password: 'pas'},
-    user5 = {name: 'Sveta', username: 'ttt', password: 'dfg'},
-    user6 = {name: 'Olya', username: 'yyy', password: 'hjk'},
-    user7 = {name: 'Stepan', username: 'uuu', password: 'lzx'},
-    user8 = {name: 'Petro', username: 'iii', password: 'cvb'},
-    user9 = {name: 'Katerina', username: 'ooo', password: 'nmq'},
-    user10 = {name: 'Pasha', username: 'ppp', password: 'wer'}
+    {name: 'Ivan', username: 'qqq', password: 'qwe'},
+    {name: 'Mikola', username: 'www', password: 'rty'},
+    {name: 'Maksim', username: 'eee', password: 'uio'},
+    {name: 'Olena', username: 'rrr', password: 'pas'},
+    {name: 'Sveta', username: 'ttt', password: 'dfg'},
+    {name: 'Olya', username: 'yyy', password: 'hjk'},
+    {name: 'Stepan', username: 'uuu', password: 'lzx'},
+    {name: 'Petro', username: 'iii', password: 'cvb'},
+    {name: 'Katerina', username: 'ooo', password: 'nmq'},
+    {name: 'Pasha', username: 'ppp', password: 'wer'}
 ]
 console.log(users[0].password)
 console.log(users[1].password)
@@ -82,13 +82,13 @@ console.log(users[9].password)
 //Як зробити цей масив - вам потрібно подумати. Нормальних варіантів опису - 2.
 // Варіант, коли в вас буде одновимірний масив з 21 значенням вичключаємо одразу
 let dayIndicators = [
-    day1 = {morningTemp: 8, dayTemp: 19, eveningTemp: 12},
-    day2 = {morningTemp: 10, dayTemp: 22, eveningTemp: 15},
-    day3 = {morningTemp: 10, dayTemp: 24, eveningTemp: 15},
-    day4 = {morningTemp: 15, dayTemp: 28, eveningTemp: 19},
-    day5 = {morningTemp: 14, dayTemp: 27, eveningTemp: 18},
-    day6 = {morningTemp: 14, dayTemp: 28, eveningTemp: 18},
-    day7 = {morningTemp: 15, dayTemp: 29, eveningTemp: 17}
+    {morningTemp: 8, dayTemp: 19, eveningTemp: 12},
+    {morningTemp: 10, dayTemp: 22, eveningTemp: 15},
+    {morningTemp: 10, dayTemp: 24, eveningTemp: 15},
+    {morningTemp: 15, dayTemp: 28, eveningTemp: 19},
+    {morningTemp: 14, dayTemp: 27, eveningTemp: 18},
+    {morningTemp: 14, dayTemp: 28, eveningTemp: 18},
+    {morningTemp: 15, dayTemp: 29, eveningTemp: 17}
 ]
 
 
@@ -130,7 +130,7 @@ else {decade = 'third'}
 //Скласти розклад на тиждень за домопоги switch.
 //Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день
 //(можна замість плану на день, назву дня англійською).
-let dayNumber = 3
+let dayNumber = 8
 switch (dayNumber) {
     case 1:
         console.log('Monday')
@@ -153,6 +153,8 @@ switch (dayNumber) {
     case 7:
         console.log('Sunday')
         break
+    default:
+        console.log('Not found')
 }
 
 
