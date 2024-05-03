@@ -47,8 +47,8 @@ console.log(typeof z);
 
 
 //add********************
-let name = prompt();
-let surname = prompt();
-let age = prompt();
+let name = prompt('name');
+let surname = prompt('surname');
+let age = prompt('age');
 
 console.log(`${name} ${surname} ${age}`);
