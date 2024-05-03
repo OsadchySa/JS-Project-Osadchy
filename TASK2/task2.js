@@ -66,16 +66,16 @@ users = [
     user9 = {name: 'Katerina', username: 'ooo', password: 'nmq'},
     user10 = {name: 'Pasha', username: 'ppp', password: 'wer'}
 ]
-console.log(user1.password)
-console.log(user2.password)
-console.log(user3.password)
-console.log(user4.password)
-console.log(user5.password)
-console.log(user6.password)
-console.log(user7.password)
-console.log(user8.password)
-console.log(user9.password)
-console.log(user10.password)
+console.log(users[0].password)
+console.log(users[1].password)
+console.log(users[2].password)
+console.log(users[3].password)
+console.log(users[4].password)
+console.log(users[5].password)
+console.log(users[6].password)
+console.log(users[7].password)
+console.log(users[8].password)
+console.log(users[9].password)
 
 
 //описати масив, в якому буде зберігатись інформація про температуру вранці, вдень і ввечері за термін в 7 днів.
