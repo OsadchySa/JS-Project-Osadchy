@@ -90,7 +90,7 @@ let products = [
 ]
 for (let j = 0; j < products.length; j++) {
     document.write(`<div class="product-card">
-                        <h3 class="product-title">${products[j].title} ${'price -'} 
+                        <h3>${products[j].title} ${'price -'} 
                             ${products[j].price}
                             ${'grn'}
                         </h3>
