@@ -121,8 +121,7 @@ console.log(swap([11,22,33,44],1,2))
 function exchange(sumUAH,currencyValues,exchangeCurrency) {
     for (const carVal of currencyValues) {
         if (carVal.currency === exchangeCurrency) {
-            let result = sumUAH/carVal.value
-            return result
+            return sumUAH/carVal.value
        }
 
     }
