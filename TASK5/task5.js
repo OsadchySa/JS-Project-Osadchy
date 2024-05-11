@@ -119,3 +119,19 @@ let exchange = (sumUAH, currencyValues, exchangeCurrency) => {
 }
 console.log(exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],
     'USD'))
+
+
+//РЕКУРСІЯ ************************************************************************************************************
+resultArray = []
+arrForRec = [1, 2, 3, [9, 4, 7, 9], 5, 7, 12, 76, 23, [34, 67, 234, [345, 34, 734, 5, 3]], 4, 3, 2]
+function getFromArr(arr) {
+    for (let obj of arr) {
+        if (Array.isArray(obj)) {
+            getFromArr(obj)
+        }else {resultArray.push(obj)}
+
+    }
+}
+
+getFromArr(arrForRec)
+console.log(resultArray)
