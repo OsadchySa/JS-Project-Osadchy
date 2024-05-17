@@ -200,3 +200,37 @@ console.log(futureWife)
 
 
 //Через Array.prototype. створити власний foreach, filter, map
+Array.prototype.youngPrincess = function (callback) {
+    let arr = []
+    this.forEach(cind => {
+        if (callback(cind)) {
+            arr.push(cind)
+        }
+    })
+    return arr
+}
+console.log(cinderellas.youngPrincess((princess) => princess.age < 30))
+
+
+Array.prototype.bigFootCind = function (callback) {
+    let arr = []
+    this.filter(cind => {
+        if (callback(cind)) {
+            arr.push(cind)
+        }
+    })
+    return arr
+}
+console.log(cinderellas.bigFootCind((cind) => cind.footSize > 40))
+
+
+Array.prototype.cindElder = function (callback) {
+    let arr = []
+    this.map(cind => {
+        if (callback(cind)) {
+            arr.push(cind)
+        }
+    })
+    return arr
+}
+console.log(cinderellas.bigFootCind((cind) => cind.age > 29))
