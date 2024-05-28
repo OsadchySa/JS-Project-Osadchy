@@ -305,3 +305,26 @@ checkBut.onclick = function (){
 }
 
 
+//Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+//При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+let divOfInputs = document.createElement('div')
+divOfInputs.classList.add('divOfInp')
+document.body.append(divOfInputs)
+let inpBut = document.createElement('button')
+inpBut.innerText = 'OK'
+document.body.append(inpBut)
+
+let inpQuanLines = document.createElement('input')
+let inpQuanCell = document.createElement('input')
+let inpCellFill = document.createElement('input')
+divOfInputs.append(inpQuanLines,inpQuanCell,inpCellFill)
+
+inpBut.onclick = function (){
+    let mainDiv = document.createElement('div')
+    mainDiv.classList.add('mainDiv')
+    document.body.append(mainDiv)
+    for (i = 0; i < inpQuanLines.value; i++){
+        let midDiv = document.createElement('div')
+        mainDiv.append(midDiv)
+    }
+}
