@@ -43,12 +43,6 @@
                 exampleDiv.classList.add('exampleDiv')
                 document.body.append(exampleDiv)
                 for (user of usersArr){
-                    const userComment = createElement("div", ["user-comments"], "");
-                    userComment.addEventListener("click", () => {
-                        localStorage.setItem("currentCommentId", JSON.stringify(comment.id));
-                        window.location.href = "user-comment.html";
-                    });
-
                     let idNameA = document.createElement('a')
                     idNameA.innerText = `id: ${user.id} name: ${user.name}`
                     /*idNameA.onclick = function () {
