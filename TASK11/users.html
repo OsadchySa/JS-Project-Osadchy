@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .idNamesDiv{
+            display: flex;
+            flex-direction: column;
+        }
+        .exampleDiv{
+            height: 50vh;
+            width: 50vw;
+            background-color: #ff7676;
+            margin-top: 150vh;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //зробити файл users.html
+        //з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+        //вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+        //при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
+        //отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   де ХХХ - айді користувача)
+
+        let baseUrl = 'https://jsonplaceholder.typicode.com/users'
+        //let getUserById = (id)=>baseUrl + '/' + id
+
+        fetch(baseUrl)
+            .then((value) => value.json())
+            .then((response) => {
+                console.log(response)
+                let usersArr = response
+                console.log(usersArr)
+                let idNamesDiv = document.createElement('div')
+                idNamesDiv.classList.add('idNamesDiv')
+                document.body.append(idNamesDiv)
+                let exampleDiv = document.createElement('div')
+                exampleDiv.classList.add('exampleDiv')
+                document.body.append(exampleDiv)
+                for (user of usersArr){
+                    const userComment = createElement("div", ["user-comments"], "");
+                    userComment.addEventListener("click", () => {
+                        localStorage.setItem("currentCommentId", JSON.stringify(comment.id));
+                        window.location.href = "user-comment.html";
+                    });
+
+                    let idNameA = document.createElement('a')
+                    idNameA.innerText = `id: ${user.id} name: ${user.name}`
+                    /*idNameA.onclick = function () {
+                        localStorage.setItem('user id', JSON.stringify(user.id))
+                    }*/
+                    idNameA.href = `user-details.html`
+                    idNamesDiv.append(idNameA)
+                }
+
+
+            })
+
+
+    </script>
+</body>
+</html>
