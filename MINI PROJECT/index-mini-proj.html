@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .idNamesDiv{
+            display: flex;
+            flex-direction: column;
+        }
+        .butUserInform{
+            width: 20vw;
+            background-color: #6d6de0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //В index.html
+        //1 отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
+        //2 Вивести id,name всіх user в index.html. Окремий блок для кожного user.
+        //3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід
+        //на сторінку user-details.html, котра має детальну інфорацію про об'єкт на який клікнули
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((value) => value.json())
+            .then((response) => {
+                let usersArr = response
+                console.log(usersArr)
+                let idNamesDiv = document.createElement('div')
+                idNamesDiv.classList.add('idNamesDiv')
+                document.body.append(idNamesDiv)
+                for (user of usersArr){
+                    let idNameDiv = document.createElement('div')
+                    idNameDiv.innerText = `id: ${user.id} name: ${user.name}`
+                    //idNameA.href = `user-details.html?id=${user.id}`
+                    let butUserInform = document.createElement('a')
+                    butUserInform.innerText = 'details'
+                    butUserInform.addEventListener('click', function (e){
+                        //console.dir(e.target)
+                        localStorage.setItem('id', JSON.stringify(Number(e.target.previousElementSibling.innerHTML[4])))
+                        butUserInform.href = 'user-details-mini-proj.html'
+                    })
+                    butUserInform.classList.add('butUserInform')
+                    idNamesDiv.append(idNameDiv,butUserInform)
+                }
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
