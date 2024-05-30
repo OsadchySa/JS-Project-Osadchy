@@ -37,18 +37,20 @@
                 idNamesDiv.classList.add('idNamesDiv')
                 document.body.append(idNamesDiv)
                 for (user of usersArr){
+                    let nameDiv = document.createElement('div')
+                    nameDiv.innerText = `name: ${user.name}`
                     let idNameDiv = document.createElement('div')
-                    idNameDiv.innerText = `id: ${user.id} name: ${user.name}`
+                    idNameDiv.innerText = /*`id: ${*/user.id/*} name: ${user.name}`*/
                     //idNameA.href = `user-details.html?id=${user.id}`
                     let butUserInform = document.createElement('a')
                     butUserInform.innerText = 'details'
                     butUserInform.addEventListener('click', function (e){
-                        //console.dir(e.target)
-                        localStorage.setItem('id', JSON.stringify(Number(e.target.previousElementSibling.innerHTML[4])))
+                        console.dir(e.target)
+                        localStorage.setItem('id', JSON.stringify(Number(e.target.previousElementSibling.outerText)))
                         butUserInform.href = 'user-details-mini-proj.html'
                     })
                     butUserInform.classList.add('butUserInform')
-                    idNamesDiv.append(idNameDiv,butUserInform)
+                    idNamesDiv.append(nameDiv,idNameDiv,butUserInform)
                 }
             })
 
