@@ -32,20 +32,20 @@
             .then((value) => value.json())
             .then((response) => {
                 let usersArr = response
-                console.log(usersArr)
                 let idNamesDiv = document.createElement('div')
                 idNamesDiv.classList.add('idNamesDiv')
                 document.body.append(idNamesDiv)
                 for (user of usersArr){
+                    let divOfUser = document.createElement('div')
+                    divOfUser.classList.add('divOfUser')
+                    divOfUser.append()
                     let nameDiv = document.createElement('div')
                     nameDiv.innerText = `name: ${user.name}`
                     let idNameDiv = document.createElement('div')
-                    idNameDiv.innerText = /*`id: ${*/user.id/*} name: ${user.name}`*/
-                    //idNameA.href = `user-details.html?id=${user.id}`
+                    idNameDiv.innerText = user.id
                     let butUserInform = document.createElement('a')
                     butUserInform.innerText = 'details'
                     butUserInform.addEventListener('click', function (e){
-                        console.dir(e.target)
                         localStorage.setItem('id', JSON.stringify(Number(e.target.previousElementSibling.outerText)))
                         butUserInform.href = 'user-details-mini-proj.html'
                     })
@@ -54,7 +54,7 @@
                 }
             })
 
-
+//index.html - всі блоки з user - по 2 в рядок. кнопки/аосилвння розташувати під інформацією про user.
 
 
 

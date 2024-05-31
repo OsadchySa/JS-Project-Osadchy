@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .commentDiv{
+            background-color: #706666;
+            margin-top: 20px;
+            border-color: black;
+        }
+        .mainDIv{
+            background-color: #1f8a66;
+        }
+        p{
+            margin-left: 20px;
+            margin-top: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*На странице post-details.html:
+        7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
+        8 Нижчє інформаці про пост, вивести всі коментарі поточного поста
+        (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)*/
+        let currentPostId = Number(localStorage.getItem('postIndex'))
+        fetch(`https://jsonplaceholder.typicode.com/posts/${currentPostId}`)
+            .then((value) => value.json())
+            .then((response) => {
+                //console.log(response)
+                let mainDIv = document.createElement('div')
+                mainDIv.classList.add('mainDIv')
+                document.body.append(mainDIv)
+                let bodyOfPostP = document.createElement('p')
+                let idOfPostP = document.createElement('p')
+                let titleOfPostP = document.createElement('p')
+                let userIdOfPostP = document.createElement('p')
+                bodyOfPostP.innerText = `body: ${response.body}`
+                idOfPostP.innerText = `id: ${response.id}`
+                titleOfPostP.innerText = `title: ${response.title}`
+                userIdOfPostP.innerText = `userId: ${response.userId}`
+                mainDIv.append(bodyOfPostP,idOfPostP,titleOfPostP,userIdOfPostP)
+            })
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${currentPostId}/comments`)
+            .then((value) => value.json())
+            .then((response) => {
+                console.log(response)
+                let commentsDiv = document.createElement('div')
+                commentsDiv.classList.add('commentsDiv')
+                document.body.append(commentsDiv)
+                for (const comment of response){
+                    let commentDiv = document.createElement('div')
+                    commentDiv.classList.add('commentDiv')
+                    commentsDiv.append(commentDiv)
+                    let bodyPar = document.createElement('p')
+                    let emailPar = document.createElement('p')
+                    let postIdPar = document.createElement('p')
+                    let idPar = document.createElement('p')
+                    let namePar = document.createElement('p')
+                    bodyPar.innerText = `body: ${comment.body}`
+                    emailPar.innerText = `email: ${comment.email}`
+                    postIdPar.innerText = `postId: ${comment.postId}`
+                    idPar.innerText = `id: ${comment.id}`
+                    namePar.innerText = `name: ${comment.name}`
+                    commentDiv.append(bodyPar,emailPar,idPar,namePar,postIdPar)
+                }
+            })
+
+
+        /*post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
+        Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки
+        (дати фон. марджини і тд)*/
+    </script>
+</body>
+</html>
