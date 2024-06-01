@@ -7,17 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .idNamesDiv{
+        .idNameButDiv{
+            width: 17.4vw;
             display: flex;
             flex-direction: column;
+            margin-top: 40px;
+            margin-left: 40px;
+            background-color: #b0cee0;
+
+        }
+        .nameDiv{
+            display: flex;
+            justify-content: center;
+        }
+        .idNameDiv{
+            color: #b0cee0;
         }
         .butUserInform{
-            width: 20vw;
+            width: 17.4vw;
             background-color: #6d6de0;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 40px;
+        }
+        body{
+            display: grid;
+            grid-template-columns: 20vw 20vw;
         }
     </style>
 </head>
@@ -32,25 +49,27 @@
             .then((value) => value.json())
             .then((response) => {
                 let usersArr = response
-                let idNamesDiv = document.createElement('div')
-                idNamesDiv.classList.add('idNamesDiv')
-                document.body.append(idNamesDiv)
+
                 for (user of usersArr){
-                    let divOfUser = document.createElement('div')
-                    divOfUser.classList.add('divOfUser')
-                    divOfUser.append()
+                    let idNameButDiv = document.createElement('div')
+                    idNameButDiv.classList.add('idNameButDiv')
+                    document.body.append(idNameButDiv)
                     let nameDiv = document.createElement('div')
                     nameDiv.innerText = `name: ${user.name}`
+                    nameDiv.classList.add('nameDiv')
+                    idNameButDiv.append(nameDiv)
                     let idNameDiv = document.createElement('div')
                     idNameDiv.innerText = user.id
+                    idNameDiv.classList.add('idNameDiv')
+                    idNameButDiv.append(idNameDiv)
                     let butUserInform = document.createElement('a')
                     butUserInform.innerText = 'details'
+                    idNameButDiv.append(butUserInform)
                     butUserInform.addEventListener('click', function (e){
                         localStorage.setItem('id', JSON.stringify(Number(e.target.previousElementSibling.outerText)))
                         butUserInform.href = 'user-details-mini-proj.html'
                     })
                     butUserInform.classList.add('butUserInform')
-                    idNamesDiv.append(nameDiv,idNameDiv,butUserInform)
                 }
             })
 

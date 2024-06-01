@@ -10,6 +10,33 @@
         a{
             margin-right: 15px;
         }
+        .userDiv{
+            background-color: #7298c0;
+            padding: 3%;
+            color: #22225b;
+        }
+        .divButUserPost{
+            display: flex;
+            justify-content: center;
+            margin-top: 18vh;
+        }
+        .butUserPost{
+            background-color: #7298c0;
+            height: 5vh;
+            width: 25vw;
+            color: #22225b;
+            font-size: 18px;
+        }
+        .bigDivOfPosts{
+            display: grid;
+            grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+            margin-top: 15vh;
+        }
+        .divOfPostIdTit{
+            margin: 20px;
+            padding: 15px;
+            background-color: #52af8f;
+        }
     </style>
 </head>
 <body>
@@ -24,6 +51,7 @@
             .then((value) => value.json())
             .then((response) => {
                 let userDiv = document.createElement('div')
+                userDiv.classList.add('userDiv')
                 document.body.append(userDiv)
                 let idP = document.createElement('p')
                 idP.innerText = response.id
@@ -45,27 +73,38 @@
 
                 let butUserPost = document.createElement('button')
                 butUserPost.innerText = 'post of current user'
+                butUserPost.classList.add('butUserPost')
                 butUserPost.onclick = function (){
                     let currentId = Number(localStorage.getItem('id'))
                     fetch(`https://jsonplaceholder.typicode.com/users/${currentId}/posts`)
                         .then((value) => value.json())
                         .then((response) => {
                             let postsArr = response
+                            let bigDivOfPosts = document.createElement('div')
+                            bigDivOfPosts.classList.add('bigDivOfPosts')
+                            document.body.append(bigDivOfPosts)
                             for (const post of postsArr){
+                                let divOfPostIdTit = document.createElement('div')
+                                bigDivOfPosts.append(divOfPostIdTit)
+                                divOfPostIdTit.classList.add('divOfPostIdTit')
                                 let postId = document.createElement('p')
                                 postId.innerText = `${post.id}`
-                                document.body.append(postId)
+                                divOfPostIdTit.append(postId)
                                 let titA = document.createElement('a')
                                 titA.innerText = `${post.title}`
                                 titA.addEventListener('click', function (even){
                                     localStorage.setItem('postIndex', JSON.stringify(Number(even.target.previousElementSibling.outerText)))
                                 })
-                                document.body.append(titA)
+                                divOfPostIdTit.append(titA)
                                 titA.href = 'post-details-mini-proj.html'
                             }
                         })
                 }
-                userDiv.append(idP,nameP,usernameP,emailP,addressP,companyP,phoneP,websiteP,butUserPost)
+                userDiv.append(idP,nameP,usernameP,emailP,addressP,companyP,phoneP,websiteP)
+                let divButUserPost = document.createElement('div')
+                divButUserPost.classList.add('divButUserPost')
+                document.body.append(divButUserPost)
+                divButUserPost.append(butUserPost)
             })
         /*user-details.html - блок з інфою про user зверху сторінки. Кнопка нижчє, на 90% ширини сторінки, по центру.
         блоки з короткою іфною про post - в ряд по 5 */
